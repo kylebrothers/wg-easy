@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  wg-easy:
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    container_name: wg-easy
+    environment:
+      - WG_HOST=www.brothersbrothers.com # your hostname or ip address
+      - PASSWORD=${UIPassword} # change this
+      - WG_DEFAULT_DNS=192.168.0.134 # add your local dns like pihole
+    hostname: wireguard-easy
+    image: docker.io/weejewel/wg-easy:latest
+    ports:
+      - 51820:51820/udp #VPN
+      - 51821:51821/tcp #WEBGUI
+    restart: unless-stopped
+    volumes:
+      - wg-easy_data:/etc/wireguard
+    #networks:
+    #  - proxy
+#    labels:
+#      - traefik.enable=true
+#      - traefik.http.routers.wireguard.rule=Host(`vpn.example.com`)
+#      - traefik.http.services.wireguard.loadbalancer.server.port=51821
+#      - traefik.docker.network=proxy
+#      # Part for local lan services only
+#      - traefik.http.routers.wireguard.middlewares=local-ipwhitelist@file
+
+#networks:
+#  proxy:
+#    external: true
+
+volumes:
+  wg-easy_data:
+    driver_opts:
+      type: nfs
+      device: ":/Docker/wg-easy/data"
+      o: nfsvers=4,addr=192.168.0.134,nolock,soft,rw
