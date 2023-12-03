@@ -10,7 +10,6 @@ services:
       - WG_HOST=www.brothersbrothers.com # your hostname or ip address
       - PASSWORD=${UIPassword} # change this
       - WG_DEFAULT_DNS=8.8.8.8, 8.8.4.4  # add your local dns like pihole
-      - WG_DEFAULT_ADDRESS=192.168.0.x
     hostname: wireguard-easy
     image: docker.io/weejewel/wg-easy:latest
     ports:
