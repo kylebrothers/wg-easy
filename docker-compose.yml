@@ -9,7 +9,7 @@ services:
     environment:
       - WG_HOST=www.brothersbrothers.com # your hostname or ip address
       - PASSWORD=${UIPassword} # change this
-      - WG_DEFAULT_ADDRESS=192.168.0.x
+      - WG_DEFAULT_ADDRESS=10.13.13.2/32
       - WG_DEFAULT_DNS=192.168.0.1  # add your local dns like pihole
       - WG_ALLOWED_IPS=192.168.0.1/24
     hostname: wireguard-easy
