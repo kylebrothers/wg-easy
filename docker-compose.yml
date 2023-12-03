@@ -7,7 +7,7 @@ services:
       - SYS_MODULE
     container_name: wg-easy
     environment:
-      - WG_HOST=192.168.0.134 # your hostname or ip address
+      - WG_HOST=www.brothersbrothers.com # your hostname or ip address
       - PASSWORD=${UIPassword} # change this
       - WG_DEFAULT_DNS=8.8.8.8, 8.8.4.4  # add your local dns like pihole
     hostname: wireguard-easy
