@@ -2,6 +2,7 @@ version: "3"
 
 services:
   wg-easy:
+    network_mode: host
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
@@ -12,9 +13,6 @@ services:
       - WG_DEFAULT_DNS=8.8.8.8, 8.8.4.4  # add your local dns like pihole
     hostname: wireguard-easy
     image: docker.io/weejewel/wg-easy:latest
-    ports:
-      - 51820:51820/udp #VPN
-      - 51821:51821/tcp #WEBGUI
     restart: unless-stopped
     volumes:
       - wg-easy_data:/etc/wireguard
