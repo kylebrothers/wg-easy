@@ -16,8 +16,6 @@ services:
     restart: unless-stopped
     volumes:
       - wg-easy_data:/etc/wireguard
-    sysctls:
-      - net.ipv4.ip_forward=1
     #networks:
     #  - proxy
 #    labels:
